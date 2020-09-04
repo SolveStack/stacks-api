@@ -1,4 +1,4 @@
-# Node.js Express API with TypeScript 3
+# Stacks API
 
 
 ![CircleCI branch](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser/master.svg?style=flat-square)
@@ -35,20 +35,7 @@ This generator will help you to build your own Node.js Express Mongodb API using
 - mongodb >= 3.0
 - typescript >= 3.0
 
-## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-node-express-typescript-api using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
-```bash
-npm install -g yo
-npm install -g generator-node-express-typescript-api
-```
-
-Then generate your new project:
-
-```bash
-yo node-express-typescript-api
-```
 ## App skeleton
 ```
 .
