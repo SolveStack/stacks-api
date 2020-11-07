@@ -4,6 +4,7 @@ import * as jwtConfig from '../config/middleware/jwtAuth';
 import * as swaggerUi from 'swagger-ui-express';
 import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
+import StackRouter from './StackRouter';
 let swaggerDoc: Object;
 
 try {
@@ -36,6 +37,12 @@ export function init(app: express.Application): void {
      * @constructs
      */
     app.use('/auth', AuthRouter);
+
+    /**
+     * @description Forwards any requests to the v1/stacks URI to StacksRouter
+     * @constructs
+     */
+    app.use("v1/stacks", StackRouter);
 
     /**
      * @description
