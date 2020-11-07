@@ -36,6 +36,25 @@ class UserValidation extends Validation {
     }
 
     /**
+     * @param {IUserModel} params
+     * @returns {Joi.ValidationResult<IUserModel >}
+     * @memberof UserValidation
+     */
+    // createStack(
+    //     params: IUserModel
+    // ): Joi.ValidationResult < IUserModel > {
+    //     const schema: Joi.Schema = Joi.object().keys({
+    //         name: Joi.string().required(),
+    //         email: Joi.string().email({
+    //             minDomainAtoms: 2
+    //         }).required()
+    //     });
+
+    //     return Joi.validate(params, schema);
+    // }
+
+
+    /**
      * @param {{ id: string }} body
      * @returns {Joi.ValidationResult<{ id: string }>}
      * @memberof UserValidation
