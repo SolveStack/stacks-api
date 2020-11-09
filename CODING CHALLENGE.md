@@ -1,7 +1,7 @@
 Using this repository, after creating a "stackmodel" in your Mongo database, create a `GET` to `http://localhost:3000/v1/stacks/` to list your stacks, and then create a `GET`to `http://localhost:3000/v1/stacks/:id/` to get the individual stack with your given "_id" from the database.
 
 
-For instance, if I do an HTTP `GET` request to `http://localhost:3000/v1/stacks/5f54222bc02b22d5f078e4e5/` I will get a JSON response of the following:
+For instance, if I do an HTTP `GET` request to `http://localhost:3000/v1/stacks/f54222bc02b22d5f078e4e5/` I will get a JSON response of the following:
 
 ```json
 {
