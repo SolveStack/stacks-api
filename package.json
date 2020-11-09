@@ -3,23 +3,20 @@
   "version": "2.0.10",
   "main": "./build/index.js",
   "keywords": [
-    "yeoman-generator",
     "typescript",
     "node",
     "nodejs",
     "rest",
     "restfull",
-    "api",
-    "builder",
-    "generator"
+    "api"
   ],
-  "description": "This generator will help you to build your own Node.js Express Mongodb API using TypeScript.",
-  "author": "Checha Valerii <chechavalera@gmail.com>",
+  "description": "API to browse and create software stacks for learning",
+  "author": "Ana Tomboulian <ana@solvestack.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ChechaValerii/node-typescript-mongodb/issues"
+    "url": "https://github.com/SolveStack/stacks-api/issues"
   },
-  "homepage": "https://github.com/ChechaValerii/node-typescript-mongodb#readme",
+  "homepage": "https://github.com/SolveStack/stacks-api#readme",
   "scripts": {
     "build": "tsc --skipLibCheck",
     "start": "tsc --skipLibCheck && node ./build/config/server/index.js",
