@@ -4,6 +4,7 @@ import * as jwtConfig from '../config/middleware/jwtAuth';
 import * as swaggerUi from 'swagger-ui-express';
 import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
+import StacksRouter from './StacksRouter';
 let swaggerDoc: Object;
 
 try {
@@ -36,6 +37,14 @@ export function init(app: express.Application): void {
      * @constructs
      */
     app.use('/auth', AuthRouter);
+    /**
+    * @description
+    *  Forwards any requests to the /v1/stacks URI to our StacksRouter
+    *  Also, check if user authenticated
+    * @constructs
+    */
+   app.use('/v1/stacks', jwtConfig.isAuthenticated, StacksRouter);
+
 
     /**
      * @description
@@ -66,4 +75,4 @@ export function init(app: express.Application): void {
      * @constructs all routes
      */
     app.use(router);
-}
+};
