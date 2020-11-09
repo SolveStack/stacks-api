@@ -4,6 +4,8 @@ import * as jwtConfig from '../config/middleware/jwtAuth';
 import * as swaggerUi from 'swagger-ui-express';
 import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
+// Importing Stacks
+import StackRouter from './stackRouter'
 let swaggerDoc: Object;
 
 try {
@@ -36,6 +38,9 @@ export function init(app: express.Application): void {
      * @constructs
      */
     app.use('/auth', AuthRouter);
+
+    // Creating Middleware for Stacks
+    app.use('/v1/stacks', StackRouter)
 
     /**
      * @description

@@ -277,6 +277,88 @@
           }
         }
       }
+    },
+    "/v1/stacks": {
+      "get": {
+        "description": "Get all stored stacks in Database",
+        "tags": [
+          "stackmodel"
+        ],
+        "responses": {
+          "200": {
+            "description": "Stack list Array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Stacks"
+                    }
+                  ]
+                },
+                "example": [
+                  {
+                  "_id": "f54222bc02b22d5f078e4e5",
+                  "name": "Node, Mongoose and Typescript stack",
+                  "wikipediaLink": "https://en.wikipedia.org/wiki/Mongoose_(web_server)"
+                  }
+                ]
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/stacks/{id}":{
+      "get": {
+        "description": "Get stack by ID",
+        "tags":[
+          "stackmodel"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the unique stackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"Stack id number",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Stacks"
+                    }
+                  ]
+                },
+                "example":
+                  {
+                  "_id": "f54222bc02b22d5f078e4e5",
+                  "name": "Node, Mongoose and Typescript stack",
+                  "wikipediaLink": "https://en.wikipedia.org/wiki/Mongoose_(web_server)"
+                  }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -335,7 +417,21 @@
             "example": "User created"
           }
         }
+      },
+      "StackSchema":{
+        "properties":{
+          "id": {"type":"string"},
+          "name": {"type":"string"},
+          "wikipediaLink": {"type":"string"}
+        }
+      },
+      "Stacks": {
+        "type":"array",
+        "items": {
+          "$ref": "#/components/schemas/StackSchema"
+        }
       }
+      
     },
     "securitySchemes": {
       "ApiKeyAuth": {
