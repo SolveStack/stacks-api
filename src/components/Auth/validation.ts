@@ -49,7 +49,7 @@ class AuthValidation extends Validation {
         });
 
         return Joi.validate(params, schema);
-    } 
+    }
 }
 
 export default new AuthValidation();
