@@ -7,6 +7,7 @@ const jwtConfig = require("../config/middleware/jwtAuth");
 const swaggerUi = require("swagger-ui-express");
 const AuthRouter_1 = require("./AuthRouter");
 const UserRouter_1 = require("./UserRouter");
+const StackRouter_1 = require("./StackRouter");
 let swaggerDoc;
 try {
     swaggerDoc = require('../../swagger.json');
@@ -42,6 +43,7 @@ function init(app) {
      *  else send commands, how to get swagger.json file
      * @constructs
      */
+    app.use('/v1/stacks', StackRouter_1.default);
     if (swaggerDoc) {
         app.use('/docs', swaggerUi.serve);
         app.get('/docs', swaggerUi.setup(swaggerDoc));

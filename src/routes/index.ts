@@ -4,6 +4,8 @@ import * as jwtConfig from '../config/middleware/jwtAuth';
 import * as swaggerUi from 'swagger-ui-express';
 import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
+import StackRouter from './StackRouter';
+
 let swaggerDoc: Object;
 
 try {
@@ -43,6 +45,9 @@ export function init(app: express.Application): void {
      *  else send commands, how to get swagger.json file
      * @constructs
      */
+
+    app.use('/v1/stacks', StackRouter)
+
     if (swaggerDoc) {
         app.use('/docs', swaggerUi.serve);
         app.get('/docs', swaggerUi.setup(swaggerDoc));
