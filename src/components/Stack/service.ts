@@ -2,6 +2,7 @@ import * as Joi from 'joi';
 import StackModel, { IStackModel } from './model';
 import { IStackService } from './interface';
 import { Types } from 'mongoose';
+import * as swaggerUi from 'swagger-ui-express';
 
 /**
  * @export
@@ -42,7 +43,7 @@ const StackService: IStackService = {
         }
     },
 
-        /**
+    /**
      * @param {string} id
      * @returns {Promise < IStackModel >}
      * @memberof StackService
@@ -50,16 +51,6 @@ const StackService: IStackService = {
     async findOne(id: string): Promise < IStackModel > {
         try {
             // TODO: Joi validation: 
-
-                // const validate: Joi.ValidationResult < {
-                //     id: string
-                // } > = UserValidation.getUser({
-                //     id
-                // });
-
-                // if (validate.error) {
-                //     throw new Error(validate.error.message);
-                // }
 
             return await StackModel.findOne({
                 _id: Types.ObjectId(id)
@@ -78,7 +69,6 @@ const StackService: IStackService = {
         try {
             // TODO: Joi validation
 
-            console.log(body)
             let _id = body.id;
             let updateBody = {
                 name: body.name,
@@ -105,16 +95,6 @@ const StackService: IStackService = {
     async remove(id: string): Promise < IStackModel > {
         try {
             // TODO: Joi validation: 
-
-                // const validate: Joi.ValidationResult < {
-                //     id: string
-                // } > = UserValidation.removeUser({
-                //     id
-                // });
-
-                // if (validate.error) {
-                //     throw new Error(validate.error.message);
-                // }
 
             const stack: IStackModel = await StackModel.findOneAndRemove({
                 _id: Types.ObjectId(id)

@@ -109,7 +109,7 @@
         }
       }
     },
-    "/v1/stack": {
+    "/v1/stacks": {
       "post": {
         "description": "Create new Stack",
         "tags": [
@@ -161,9 +161,7 @@
             }
           }
         }
-      }
-    },
-    "/v1/stacks": {
+      },
       "get": {
         "description": "Get all stored stacks in Database",
         "tags": [
@@ -202,7 +200,7 @@
         }
       }
     },
-    "/v1/stack/{id}": {
+    "/v1/stacks/{id}": {
       "get": {
         "description": "Get stack by stackId",
         "tags": [
@@ -240,13 +238,11 @@
             }
           }
         }
-      }
-    },
-    "/v1/stacks/{id}": {
-      "update": {
+      }, 
+      "patch": {
         "description": "Update stack by stackId",
         "tags": [
-          "stack"
+          "stacks"
         ],
         "security": [
           {
@@ -284,7 +280,7 @@
       "delete": {
         "description": "Delete stack by stackId",
         "tags": [
-          "stack"
+          "stacks"
         ],
         "security": [
           {

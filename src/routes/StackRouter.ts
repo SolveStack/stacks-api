@@ -11,7 +11,7 @@ const router: Router = Router();
  * @example http://localhost:PORT/v1/stacks
  * 
  * @swagger
- * /v1/stack:
+ * /v1/stacks:
  *   post:
  *      description: Create new Stack
  *      tags: ["stacks"]
@@ -77,7 +77,7 @@ router.get('/', StackComponent.findAll);
  * @example http://localhost:PORT/v1/stacks:id
 
 * @swagger
- * /v1/stack/{id}:
+ * /v1/stacks/{id}:
  *  get:
  *    description: Get stack by stackId
  *    tags: ["stacks"]
@@ -107,7 +107,7 @@ router.get('/:id', StackComponent.findOne);
  * 
  * @swagger
  * /v1/stacks/{id}:
- *  update:
+ *  patch:
  *    description: Update stack by stackId
  *    tags: ["stack"]
  *    security:

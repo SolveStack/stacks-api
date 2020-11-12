@@ -1,4 +1,5 @@
 import { IStackModel } from './model';
+import * as swaggerUi from 'swagger-ui-express';
 
 /**
  * @export

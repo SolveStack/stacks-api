@@ -1,6 +1,7 @@
 import { Document, Schema } from 'mongoose';
 import { NextFunction } from 'express';
 import * as connections from '../../config/connection/connection';
+import * as swaggerUi from 'swagger-ui-express';
 
 
 /**
