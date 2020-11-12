@@ -11,7 +11,11 @@ const router = express_1.Router();
  * @example http://localhost:PORT/v1/stacks
  */
 router.post("/", components_1.StackComponent.create);
-// router.get('/', StackComponent.findAll);
+// /**
+//  * GET method route 
+//  * @example http://localhost:PORT/v1/stacks
+//  * /
+router.get('/', components_1.StackComponent.findAll);
 /**
  * @export {express.Router}
  */

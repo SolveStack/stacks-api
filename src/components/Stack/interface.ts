@@ -11,4 +11,10 @@ export interface IStackService {
      * @memberof IUserService
      */
     insert(IStackModel: IStackModel): Promise<IStackModel>;
+
+    /**
+     * @returns {Promise<IStackModel[]>}
+     * @memberof IStackService
+     */
+    findAll(): Promise<IStackModel[]>;
 }

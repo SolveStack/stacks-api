@@ -11,7 +11,7 @@ import { Types } from 'mongoose';
 const StackService: IStackService = {
 
     /**
-    * @param {IStackModel} user
+    * @param {IStackModel} stack
     * @returns {Promise < IStackModel >}
     * @memberof StackService
     */
@@ -23,12 +23,26 @@ const StackService: IStackService = {
             //     throw new Error(validate.error.message);
             // }
 
-            const user: IStackModel = await StackModel.create(body);
-            return user;
+            const stack: IStackModel = await StackModel.create(body);
+            return stack;
         } catch (error) {
             throw new Error(error.message);
         }
     },
+
+     /**
+     * @returns {Promise < IStackModel[] >}
+     * @memberof UserService
+     */
+    async findAll(): Promise < IStackModel[] > {
+        try {
+            return await StackModel.find({});
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+
+
 };
 
 export default StackService;

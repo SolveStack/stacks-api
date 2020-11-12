@@ -13,7 +13,19 @@ const router: Router = Router();
 router.post("/", StackComponent.create)
 
 
-// router.get('/', StackComponent.findAll);
+/**
+ * GET method route 
+ * @example http://localhost:PORT/v1/stacks
+ */
+
+router.get('/', StackComponent.findAll);
+
+/**
+ * GET method route 
+ * @example http://localhost:PORT/v1/stacks
+ */
+
+// router.get('/:id', StackComponent.findOne);
 
 /**
  * @export {express.Router}

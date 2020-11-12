@@ -5,7 +5,6 @@ const connections = require("../../config/connection/connection");
 const StackSchema = new mongoose_1.Schema({
     name: {
         type: String,
-        unique: true,
     },
     wikipediaLink: String,
     createdAt: Date,

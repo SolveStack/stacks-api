@@ -16,7 +16,7 @@ const model_1 = require("./model");
  */
 const StackService = {
     /**
-    * @param {IStackModel} user
+    * @param {IStackModel} stack
     * @returns {Promise < IStackModel >}
     * @memberof StackService
     */
@@ -28,8 +28,22 @@ const StackService = {
                 // if (validate.error) {
                 //     throw new Error(validate.error.message);
                 // }
-                const user = yield model_1.default.create(body);
-                return user;
+                const stack = yield model_1.default.create(body);
+                return stack;
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        });
+    },
+    /**
+    * @returns {Promise < IStackModel[] >}
+    * @memberof UserService
+    */
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield model_1.default.find({});
             }
             catch (error) {
                 throw new Error(error.message);
