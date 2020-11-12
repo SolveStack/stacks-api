@@ -1,5 +1,6 @@
 import * as Joi from 'joi';
 import StackModel, { IStackModel } from './model';
+import StackValidation from './validation';
 import { IStackService } from './interface';
 import { Types } from 'mongoose';
 import * as swaggerUi from 'swagger-ui-express';
@@ -18,7 +19,11 @@ const StackService: IStackService = {
     */
     async insert(body: IStackModel): Promise<IStackModel> {
         try {
-            // TODO: Joi validation: 
+            const validate: Joi.ValidationResult < IStackModel > = StackValidation.createStack(body);
+
+            if (validate.error) {
+                throw new Error(validate.error.message);
+            } 
 
             const stack: IStackModel = await StackModel.create(body);
             return stack;

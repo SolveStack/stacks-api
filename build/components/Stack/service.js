@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const model_1 = require("./model");
+const validation_1 = require("./validation");
 const mongoose_1 = require("mongoose");
 /**
  * @export
@@ -24,7 +25,13 @@ const StackService = {
     insert(body) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // TODO: Joi validation: 
+                const validate = validation_1.default.createStack(body);
+                if (validate.error) {
+                    throw new Error(validate.error.message);
+                }
+                else {
+                    console.log('okay****************************************');
+                }
                 const stack = yield model_1.default.create(body);
                 return stack;
             }
