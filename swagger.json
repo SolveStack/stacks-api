@@ -238,11 +238,11 @@
             }
           }
         }
-      }, 
+      },
       "patch": {
         "description": "Update stack by stackId",
         "tags": [
-          "stacks"
+          "stack"
         ],
         "security": [
           {
@@ -280,7 +280,7 @@
       "delete": {
         "description": "Delete stack by stackId",
         "tags": [
-          "stacks"
+          "stack"
         ],
         "security": [
           {
