@@ -1,16 +1,15 @@
-
-import { Router } from 'express';
-import { UserComponent, StackComponent } from '../components';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const components_1 = require("../components");
 /**
  * @constant {express.Router}
  */
-const router: Router = Router();
-
-/** 
+const router = express_1.Router();
+/**
  * POST method route
  * @example http://localhost:PORT/v1/stacks
- * 
+ *
  * @swagger
  * /v1/stacks:
  *   post:
@@ -43,12 +42,11 @@ const router: Router = Router();
  *              schema:
  *                $ref: '#/components/schemas/Error'
  */
-router.post("/", StackComponent.create)
-
+router.post("/", components_1.StackComponent.create);
 /**
- * GET method route 
+ * GET method route
  * @example http://localhost:PORT/v1/stacks
- * 
+ *
  * @swagger
  * /v1/stacks:
  *   get:
@@ -71,12 +69,11 @@ router.post("/", StackComponent.create)
  *              schema:
  *                $ref: '#/components/schemas/Error'
 */
-router.get('/', StackComponent.findAll);
-
+router.get('/', components_1.StackComponent.findAll);
 /**
- * GET method route 
+ * GET method route
  * @example http://localhost:PORT/v1/stacks:id
- * 
+ *
  * @swagger
  * /v1/stacks/{id}:
  *  get:
@@ -100,12 +97,11 @@ router.get('/', StackComponent.findAll);
  *              oneOf:
  *                - $ref: '#/components/schemas/StackSchema'
  */
-router.get('/:id', StackComponent.findOne);
-
+router.get('/:id', components_1.StackComponent.findOne);
 /**
- * PATCH method route 
+ * PATCH method route
  * @example http://localhost:PORT/v1/stacks/:id
- * 
+ *
  * @swagger
  * /v1/stacks/{id}:
  *  patch:
@@ -129,8 +125,7 @@ router.get('/:id', StackComponent.findOne);
  *              oneOf:
  *                - $ref: '#/components/schemas/StackSchema'
  */
-router.patch('/:id', StackComponent.update);
-
+router.patch('/:id', components_1.StackComponent.update);
 /**
  * DELETE method route
  * @example  http://localhost:PORT/v1/stacks/:id
@@ -169,9 +164,9 @@ router.patch('/:id', StackComponent.update);
  *              oneOf:
  *                - $ref: '#/components/schemas/StackSchema'
  */
-router.delete('/:id', StackComponent.remove);
-
+router.delete('/:id', components_1.StackComponent.remove);
 /**
  * @export {express.Router}
  */
-export default router;
+exports.default = router;
+//# sourceMappingURL=StackRouter.js.map
