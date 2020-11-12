@@ -77,6 +77,28 @@ const StackService = {
             }
         });
     },
+    remove(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // TODO: Joi validation: 
+                // const validate: Joi.ValidationResult < {
+                //     id: string
+                // } > = UserValidation.removeUser({
+                //     id
+                // });
+                // if (validate.error) {
+                //     throw new Error(validate.error.message);
+                // }
+                const stack = yield model_1.default.findOneAndRemove({
+                    _id: mongoose_1.Types.ObjectId(id)
+                });
+                return stack;
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        });
+    }
 };
 exports.default = StackService;
 //# sourceMappingURL=service.js.map

@@ -69,6 +69,35 @@ const StackService: IStackService = {
         }
     },
 
+    /**
+     * @param {string} id
+     * @returns {Promise < IStackModel >}
+     * @memberof StackService
+     */
+    async remove(id: string): Promise < IStackModel > {
+        try {
+            // TODO: Joi validation: 
+
+                // const validate: Joi.ValidationResult < {
+                //     id: string
+                // } > = UserValidation.removeUser({
+                //     id
+                // });
+
+                // if (validate.error) {
+                //     throw new Error(validate.error.message);
+                // }
+
+            const stack: IStackModel = await StackModel.findOneAndRemove({
+                _id: Types.ObjectId(id)
+            });
+
+            return stack;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
 };
 
 export default StackService;

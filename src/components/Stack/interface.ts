@@ -24,4 +24,11 @@ export interface IStackService {
      * @memberof IStackService
      */
     findOne(code: string): Promise<IStackModel>;
+
+    /**
+     * @param {string} id
+     * @returns {Promise<IStackModel>}
+     * @memberof IStackService
+     */
+    remove(id: string): Promise<IStackModel>;
 }
