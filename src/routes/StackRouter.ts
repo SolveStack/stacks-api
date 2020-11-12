@@ -12,20 +12,23 @@ const router: Router = Router();
  */
 router.post("/", StackComponent.create)
 
-
 /**
  * GET method route 
  * @example http://localhost:PORT/v1/stacks
  */
-
 router.get('/', StackComponent.findAll);
 
 /**
  * GET method route 
- * @example http://localhost:PORT/v1/stacks
+ * @example http://localhost:PORT/v1/stacks:id
  */
-
 router.get('/:id', StackComponent.findOne);
+
+/**
+ * DELETE method route
+ * @example  http://localhost:PORT/v1/stacks/:id
+*/
+router.delete('/:id', StackComponent.remove);
 
 /**
  * @export {express.Router}

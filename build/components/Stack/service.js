@@ -77,6 +77,11 @@ const StackService = {
             }
         });
     },
+    /**
+     * @param {string} id
+     * @returns {Promise < IStackModel >}
+     * @memberof StackService
+     */
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

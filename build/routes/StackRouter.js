@@ -18,9 +18,14 @@ router.post("/", components_1.StackComponent.create);
 router.get('/', components_1.StackComponent.findAll);
 /**
  * GET method route
- * @example http://localhost:PORT/v1/stacks
+ * @example http://localhost:PORT/v1/stacks:id
  */
 router.get('/:id', components_1.StackComponent.findOne);
+/**
+ * DELETE method route
+ * @example  http://localhost:PORT/v1/stacks/:id
+*/
+router.delete('/:id', components_1.StackComponent.remove);
 /**
  * @export {express.Router}
  */
