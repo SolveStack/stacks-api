@@ -83,8 +83,6 @@ const StackService: IStackService = {
             let updateBody = {
                 name: body.name,
                 wikipediaLink: body.wikipediaLink,
-                // modifiedAt: Date,
-                // modifiedBy: String,
             }
             const stack: IStackModel = await StackModel.updateOne
             (

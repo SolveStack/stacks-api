@@ -37,7 +37,7 @@ export function init(app: express.Application): void {
      * @description Forwards any requests to the /v1/stacks URI to our StacksRouter
      * @constructs
      */
-    app.use('/v1/stacks', StackRouter)
+    app.use('/v1/stacks/', StackRouter)
 
     /**
      * @description Forwards any requests to the /auth URI to our AuthRouter
