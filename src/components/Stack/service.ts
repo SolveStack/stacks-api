@@ -19,10 +19,6 @@ const StackService: IStackService = {
     async insert(body: IStackModel): Promise<IStackModel> {
         try {
             // TODO: Joi validation: 
-            // const validate: Joi.ValidationResult < IStackModel > = StackValidation.createUser(body);
-            // if (validate.error) {
-            //     throw new Error(validate.error.message);
-            // }
 
             const stack: IStackModel = await StackModel.create(body);
             return stack;

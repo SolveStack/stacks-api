@@ -1,6 +1,6 @@
 
 import { Router } from 'express';
-import { UserComponent, StackComponent } from '../components';
+import { StackComponent } from '../components';
 
 /**
  * @constant {express.Router}
@@ -36,6 +36,9 @@ const router: Router = Router();
  *              schema:
  *                oneOf:
  *                  - $ref: '#/components/schemas/StackSchema'
+ *                 example: "status": 201,
+ *                          "message": "Stack created"
+ * 
  *        default:
  *          description: unexpected error
  *          content:
@@ -76,7 +79,8 @@ router.get('/', StackComponent.findAll);
 /**
  * GET method route 
  * @example http://localhost:PORT/v1/stacks:id
-* @swagger
+ * 
+ * @swagger
  * /v1/stacks/{id}:
  *  get:
  *    description: Get stack by stackId
@@ -109,7 +113,7 @@ router.get('/:id', StackComponent.findOne);
  * /v1/stacks/{id}:
  *  patch:
  *    description: Update stack by stackId
- *    tags: ["stack"]
+ *    tags: ["stacks"]
  *    security:
  *      - ApiKeyAuth: []
  *    parameters:
@@ -133,12 +137,12 @@ router.patch('/:id', StackComponent.update);
 /**
  * DELETE method route
  * @example  http://localhost:PORT/v1/stacks/:id
-*
+ *
  * @swagger
  * /v1/stacks/{id}:
  *  delete:
  *    description: Delete stack by stackId
- *    tags: ["stack"]
+ *    tags: ["stacks"]
  *    security:
  *      - ApiKeyAuth: []
  *    parameters:
