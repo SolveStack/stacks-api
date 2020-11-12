@@ -34,9 +34,16 @@ export function init(app: express.Application): void {
     app.use('/v1/users', jwtConfig.isAuthenticated, UserRouter);
 
     /**
+     * @description Forwards any requests to the /v1/stacks URI to our StacksRouter
+     * @constructs
+     */
+    app.use('/v1/stacks', StackRouter)
+
+    /**
      * @description Forwards any requests to the /auth URI to our AuthRouter
      * @constructs
      */
+
     app.use('/auth', AuthRouter);
 
     /**
@@ -45,8 +52,6 @@ export function init(app: express.Application): void {
      *  else send commands, how to get swagger.json file
      * @constructs
      */
-
-    app.use('/v1/stacks', StackRouter)
 
     if (swaggerDoc) {
         app.use('/docs', swaggerUi.serve);

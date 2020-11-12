@@ -1,12 +1,19 @@
 import { Router } from 'express';
-import { StackComponent } from '../components';
+import { UserComponent, StackComponent } from '../components';
 
 /**
  * @constant {express.Router}
  */
 const router: Router = Router();
 
-router.get('/', StackComponent.findAll);
+/** 
+ * POST method route
+ * @example http://localhost:PORT/v1/stacks
+ */
+router.post("/", StackComponent.create)
+
+
+// router.get('/', StackComponent.findAll);
 
 /**
  * @export {express.Router}

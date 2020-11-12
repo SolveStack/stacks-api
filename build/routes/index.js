@@ -33,6 +33,11 @@ function init(app) {
      */
     app.use('/v1/users', jwtConfig.isAuthenticated, UserRouter_1.default);
     /**
+     * @description Forwards any requests to the /v1/stacks URI to our StacksRouter
+     * @constructs
+     */
+    app.use('/v1/stacks', StackRouter_1.default);
+    /**
      * @description Forwards any requests to the /auth URI to our AuthRouter
      * @constructs
      */
@@ -43,7 +48,6 @@ function init(app) {
      *  else send commands, how to get swagger.json file
      * @constructs
      */
-    app.use('/v1/stacks', StackRouter_1.default);
     if (swaggerDoc) {
         app.use('/docs', swaggerUi.serve);
         app.get('/docs', swaggerUi.setup(swaggerDoc));

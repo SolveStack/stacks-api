@@ -6,7 +6,12 @@ const components_1 = require("../components");
  * @constant {express.Router}
  */
 const router = express_1.Router();
-router.get('/', components_1.StackComponent.findAll);
+/**
+ * POST method route
+ * @example http://localhost:PORT/v1/stacks
+ */
+router.post("/", components_1.StackComponent.create);
+// router.get('/', StackComponent.findAll);
 /**
  * @export {express.Router}
  */
