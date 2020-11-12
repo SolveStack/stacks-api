@@ -2,6 +2,8 @@ import UserService from './service';
 import { HttpError } from '../../config/error';
 import { IUserModel } from './model';
 import { NextFunction, Request, Response } from 'express';
+import * as swaggerUi from 'swagger-ui-express';
+
 
 /**
  * @export

@@ -25,7 +25,7 @@ router.get('/', StackComponent.findAll);
  * @example http://localhost:PORT/v1/stacks
  */
 
-// router.get('/:id', StackComponent.findOne);
+router.get('/:id', StackComponent.findOne);
 
 /**
  * @export {express.Router}

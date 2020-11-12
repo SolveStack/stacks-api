@@ -32,7 +32,7 @@ const StackService: IStackService = {
 
      /**
      * @returns {Promise < IStackModel[] >}
-     * @memberof UserService
+     * @memberof StackService
      */
     async findAll(): Promise < IStackModel[] > {
         try {
@@ -42,6 +42,32 @@ const StackService: IStackService = {
         }
     },
 
+        /**
+     * @param {string} id
+     * @returns {Promise < IStackModel >}
+     * @memberof StackService
+     */
+    async findOne(id: string): Promise < IStackModel > {
+        try {
+            // TODO: Joi validation: 
+
+                // const validate: Joi.ValidationResult < {
+                //     id: string
+                // } > = UserValidation.getUser({
+                //     id
+                // });
+
+                // if (validate.error) {
+                //     throw new Error(validate.error.message);
+                // }
+
+            return await StackModel.findOne({
+                _id: Types.ObjectId(id)
+            });
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
 
 };
 

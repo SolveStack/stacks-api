@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const model_1 = require("./model");
+const mongoose_1 = require("mongoose");
 /**
  * @export
  * @implements {IStackModelService}
@@ -38,12 +39,38 @@ const StackService = {
     },
     /**
     * @returns {Promise < IStackModel[] >}
-    * @memberof UserService
+    * @memberof StackService
     */
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 return yield model_1.default.find({});
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        });
+    },
+    /**
+ * @param {string} id
+ * @returns {Promise < IStackModel >}
+ * @memberof StackService
+ */
+    findOne(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // TODO: Joi validation: 
+                // const validate: Joi.ValidationResult < {
+                //     id: string
+                // } > = UserValidation.getUser({
+                //     id
+                // });
+                // if (validate.error) {
+                //     throw new Error(validate.error.message);
+                // }
+                return yield model_1.default.findOne({
+                    _id: mongoose_1.Types.ObjectId(id)
+                });
             }
             catch (error) {
                 throw new Error(error.message);

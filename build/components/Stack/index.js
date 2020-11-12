@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAll = exports.create = void 0;
+exports.findOne = exports.findAll = exports.create = void 0;
 const service_1 = require("./service");
 const error_1 = require("../../config/error");
 /**
@@ -50,4 +50,23 @@ function findAll(req, res, next) {
     });
 }
 exports.findAll = findAll;
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+function findOne(req, res, next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const stack = yield service_1.default.findOne(req.params.id);
+            res.status(200).json(stack);
+        }
+        catch (error) {
+            next(new error_1.HttpError(error.message.status, error.message));
+        }
+    });
+}
+exports.findOne = findOne;
 //# sourceMappingURL=index.js.map
