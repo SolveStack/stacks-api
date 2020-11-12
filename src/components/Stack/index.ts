@@ -14,9 +14,9 @@ import * as swaggerUi from 'swagger-ui-express';
  */
 export async function create(req: Request, res: Response, next: NextFunction): Promise < void > {
     try {
-        const user: IStackModel = await StackService.insert(req.body);
+        const stack: IStackModel = await StackService.insert(req.body);
 
-        res.status(201).json(user);
+        res.status(201).json(stack);
     } catch (error) {
         next(new HttpError(error.message.status, error.message));
     }
@@ -63,7 +63,25 @@ export async function findOne(req: Request, res: Response, next: NextFunction): 
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
+export async function update(req: Request, res: Response, next: NextFunction): Promise < void > {
+    try {
+        const stack: IStackModel = await StackService.update(req.body);
+
+        res.status(200).json(stack);
+    } catch (error) {
+        next(new HttpError(error.message.status, error.message));
+    }
+}
+
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
 export async function remove(req: Request, res: Response, next: NextFunction): Promise < void > {
+    
     try {
         const stack: IStackModel = await StackService.remove(req.params.id);
 

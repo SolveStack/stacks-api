@@ -25,6 +25,12 @@ router.get('/', StackComponent.findAll);
 router.get('/:id', StackComponent.findOne);
 
 /**
+ * PATCH method route 
+ * @example http://localhost:PORT/v1/stacks
+ */
+router.patch('/', StackComponent.update);
+
+/**
  * DELETE method route
  * @example  http://localhost:PORT/v1/stacks/:id
 */

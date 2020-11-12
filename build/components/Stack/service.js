@@ -78,6 +78,36 @@ const StackService = {
         });
     },
     /**
+    * @param {IStackModel} stack
+    * @param {string} id
+    * @returns {Promise < IStackModel >}
+    * @memberof StackService
+    */
+    update(body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // TODO: Joi validation
+                console.log(body);
+                let _id = body.id;
+                let updateBody = {
+                    name: body.name,
+                    wikipediaLink: body.wikipediaLink
+                };
+                // const stack: IStackModel = await StackModel.findByIdAndUpdate(body._id, {body.name, body.wicipediaLink})
+                const stack = yield model_1.default.updateOne(_id, updateBody);
+                //  const stack: IStackModel = await StackModel.update({_id: string}, IStackModel)
+                // const stack: IStackModel = await StackModel.findOneAndUpdate({_id, body});
+                // const getStack: await StackModel.findOne({
+                //     _id: Types.ObjectId(id)
+                // getStack: IStackModel = await StackModel.update(body);
+                return stack;
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        });
+    },
+    /**
      * @param {string} id
      * @returns {Promise < IStackModel >}
      * @memberof StackService

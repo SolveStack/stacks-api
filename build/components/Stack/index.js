@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.remove = exports.findOne = exports.findAll = exports.create = void 0;
+exports.remove = exports.update = exports.findOne = exports.findAll = exports.create = void 0;
 const service_1 = require("./service");
 const error_1 = require("../../config/error");
 /**
@@ -22,8 +22,8 @@ const error_1 = require("../../config/error");
 function create(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const user = yield service_1.default.insert(req.body);
-            res.status(201).json(user);
+            const stack = yield service_1.default.insert(req.body);
+            res.status(201).json(stack);
         }
         catch (error) {
             next(new error_1.HttpError(error.message.status, error.message));
@@ -69,6 +69,33 @@ function findOne(req, res, next) {
     });
 }
 exports.findOne = findOne;
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {Promise < void >}
+ */
+function update(req, res, next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const stack = yield service_1.default.update(req.body);
+            // let reqObj = {
+            //     id: req.params.id,
+            //     body: req.body
+            // }
+            // const stack: IStackModel = await StackService.findOne(req.params.id);
+            // if (stack) {
+            //     const updatedStack = await StackService.update();
+            // }
+            res.status(200).json(stack);
+        }
+        catch (error) {
+            next(new error_1.HttpError(error.message.status, error.message));
+        }
+    });
+}
+exports.update = update;
 /**
  * @export
  * @param {Request} req

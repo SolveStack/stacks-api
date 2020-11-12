@@ -70,6 +70,36 @@ const StackService: IStackService = {
     },
 
     /**
+    * @param {IStackModel} stack  
+    * @returns {Promise < IStackModel >}
+    * @memberof StackService
+    */
+    async update(body: IStackModel): Promise<IStackModel> {
+        try {
+            // TODO: Joi validation
+
+            console.log(body)
+            let _id = body.id;
+            let updateBody = {
+                name: body.name,
+                wikipediaLink: body.wikipediaLink,
+                // modifiedAt: Date,
+                // modifiedBy: String,
+            }
+            const stack: IStackModel = await StackModel.updateOne
+            (
+                _id, updateBody, 
+                {new: true}
+            );
+
+            return stack
+
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+
+    /**
      * @param {string} id
      * @returns {Promise < IStackModel >}
      * @memberof StackService

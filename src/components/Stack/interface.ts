@@ -8,7 +8,7 @@ export interface IStackService {
     /** 
      * @param {IStackModel} IStackModel
      * @returns {Promise<IStackModel>}
-     * @memberof IUserService
+     * @memberof IStackService
      */
     insert(IStackModel: IStackModel): Promise<IStackModel>;
 
@@ -24,6 +24,13 @@ export interface IStackService {
      * @memberof IStackService
      */
     findOne(code: string): Promise<IStackModel>;
+
+    /** 
+     * @param {IStackModel} IStackModel
+     * @returns {Promise<IStackModel>}
+     * @memberof IStackService
+     */
+    update(IStackModel: IStackModel): Promise<IStackModel>;
 
     /**
      * @param {string} id
