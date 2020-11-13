@@ -46,8 +46,8 @@ describe('API', () => {
 
     it("create new stack", (done) => {
         const newStack = {
-          name: "testStack4",
-          wikipediaLink: "https://en.wikipedia.com/testStack2",
+          name: "testStack",
+          wikipediaLink: "https://en.wikipedia.com/testStack",
         };
 
       request(app)
@@ -122,8 +122,9 @@ after(async () => {
         await StackModel.collection.drop();
         await db.UserModel.drop();
         await db.StackModel.drop();
-        await test_users.collection.drop();
-
+        await StackModel.drop()
+        await db.stackmodel.drop();
+        await test_users_db.drop();
     } catch (error) {
         console.log('Something went wrong after tests, seems your database doesnt cleaned');
     }
