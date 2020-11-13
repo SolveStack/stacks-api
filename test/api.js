@@ -2,12 +2,16 @@ const chai = require('chai');
 const request = require('supertest');
 const app = require('../src/config/server/server').default;
 const UserModel = require('../src/components/User/model').default;
+const StackModel = require("../src/components/Stack/model").default;
 chai.should();
 
 /**
  * API tests
  */
 describe('API', () => {
+
+    //user routes 
+
     it('get all users', (done) => {
         request(app)
             .get('/v1/users')
@@ -34,6 +38,37 @@ describe('API', () => {
                 res.body.should.have.property('email');
             })
             .end(done);
+    });
+
+    // stacks routes
+
+    it("create new stack", (done) => {
+
+        const newStack = {
+          name: "testStacks",
+          wikipediaLink: "https://en.wikipedia.com/testStacks",
+        };
+
+      request(app)
+        .post("/v1/stacks")
+        .send(newStack)
+        .set("x-access-token", global.token)
+        .expect((res) => {
+          res.status.should.equal(201);
+          res.body.should.have.property("wikipediaLink");
+        })
+        .end(done);
+    });
+
+    it("get all stacks", (done) => {
+        request(app)
+        .get("/v1/stacks")
+        .set("x-access-token", global.token)
+        .expect((res) => {
+            res.status.should.equal(200);
+            res.body.should.be.an("array");
+        })
+        .end(done);
     });
 });
 
