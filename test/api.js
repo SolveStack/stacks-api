@@ -12,7 +12,6 @@ chai.should();
  * API tests
  */
 
-
 describe('API', () => {
 
     it('get all users', (done) => {
@@ -74,7 +73,7 @@ describe('API', () => {
     });
 
     it("get stack by id", (done) => {
-        const _id = "5fad43dd35fd7a038acc1cfc";
+        let _id = "5fad43dd35fd7a038acc1cfc";
         request(app)
           .get(`/v1/stacks/${_id}`)
           .set("x-access-token", global.token)
@@ -96,13 +95,21 @@ describe('API', () => {
           .set("x-access-token", global.token)
           .expect((res) => {
             res.status.should.equal(200);
+            res.body.should.have.property("ok");
           })
           .end(done);
     });
 
-
-
-
+    it("delete stack", (done) => {
+      let _id = "5fad43dd35fd7a038acc1cfc";
+      request(app)
+        .delete(`/v1/stacks/${_id}`)
+        .set("x-access-token", global.token)
+        .expect((res) => {
+          res.status.should.equal(200);
+        })
+        .end(done);
+    });
 });
 
 /**
@@ -112,10 +119,11 @@ describe('API', () => {
 after(async () => {
     try {
         await UserModel.collection.drop();
+        await StackModel.collection.drop();
+        await db.UserModel.drop();
+        await db.StackModel.drop();
         await test_users.collection.drop();
-        await StacksModel.collection.drop();
-        await db.stackmodel.drop()
-        await db.usermodel.drop();
+
     } catch (error) {
         console.log('Something went wrong after tests, seems your database doesnt cleaned');
     }
