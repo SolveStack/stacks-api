@@ -3,6 +3,9 @@ const request = require('supertest');
 const app = require('../src/config/server/server').default;
 const UserModel = require('../src/components/User/model').default;
 const StackModel = require("../src/components/Stack/model").default;
+const user = require("./fixtures/user.json");
+const stack = require("./fixtures/stack.json");
+
 chai.should();
 
 /**
@@ -81,6 +84,24 @@ describe('API', () => {
           .end(done);
     });
 
+    it("update stack", (done) => {
+        const updatedStack = {
+          _id: "5fad43dd35fd7a038acc1cfc",
+          name: "test2",
+          wikipediaLink: "https://en.wikipedia.org/wiki/test2",
+        };
+        request(app)
+          .patch(`/v1/stacks/${updatedStack._id}`)
+          .send(updatedStack)
+          .set("x-access-token", global.token)
+          .expect((res) => {
+            res.status.should.equal(200);
+          })
+          .end(done);
+    });
+
+
+
 
 });
 
@@ -93,6 +114,8 @@ after(async () => {
         await UserModel.collection.drop();
         await test_users.collection.drop();
         await StacksModel.collection.drop();
+        await db.stackmodel.drop()
+        await db.usermodel.drop();
     } catch (error) {
         console.log('Something went wrong after tests, seems your database doesnt cleaned');
     }
