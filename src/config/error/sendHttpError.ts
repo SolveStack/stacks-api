@@ -19,11 +19,11 @@ import { NextFunction, Request } from 'express';
  *        status:
  *          type: integer
  *          description: HTTP status code
- *          example: 200
+ *          example: 400
  *        message:
  *          type: string
  *          description: Error description
- *          example: User created
+ *          example: Not created
  */
 export function sendHttpErrorModule(req: Request, res: any, next: NextFunction): void {
     res.sendHttpError = (error: HttpError): void => {

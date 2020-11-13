@@ -118,13 +118,12 @@ describe('API', () => {
 
 after(async () => {
     try {
+        // TODO: clean StackModel
         await UserModel.collection.drop();
         await StackModel.collection.drop();
         await db.UserModel.drop();
         await db.StackModel.drop();
-        await StackModel.drop()
-        await db.stackmodel.drop();
-        await test_users_db.drop();
+
     } catch (error) {
         console.log('Something went wrong after tests, seems your database doesnt cleaned');
     }
