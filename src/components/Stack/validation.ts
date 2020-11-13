@@ -75,19 +75,19 @@ class StackValidation extends Validation {
      * @returns {Joi.ValidationResult<{ id: string }>}
      * @memberof StackValidation
      */
-        removeStack(
-            body: {
-                id: string
-            }
-        ): Joi.ValidationResult < {
+    removeStack(
+        body: {
             id: string
-        } > {
-            const schema: Joi.Schema = Joi.object().keys({
-                id: this.customJoi.objectId().required()
-            });
-
-            return Joi.validate(body, schema);
         }
+    ): Joi.ValidationResult<{
+        id: string
+    }> {
+        const schema: Joi.Schema = Joi.object().keys({
+            id: this.customJoi.objectId().required()
+        });
+
+        return Joi.validate(body, schema);
+    }
 }
 
 export default new StackValidation();

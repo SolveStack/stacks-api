@@ -4,9 +4,9 @@ exports.db = void 0;
 const mongoose = require("mongoose");
 const index_1 = require("../env/index");
 const connectOptions = {
-    autoReconnect: true,
-    reconnectTries: Number.MAX_VALUE,
-    reconnectInterval: 1000,
+    // autoReconnect: true,
+    // reconnectTries: Number.MAX_VALUE,
+    // reconnectInterval: 1000,
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
