@@ -8,9 +8,9 @@ chai.should();
 /**
  * API tests
  */
-describe('API', () => {
 
-    //user routes 
+
+describe('API', () => {
 
     it('get all users', (done) => {
         request(app)
@@ -43,10 +43,9 @@ describe('API', () => {
     // stacks routes
 
     it("create new stack", (done) => {
-
         const newStack = {
-          name: "testStacks",
-          wikipediaLink: "https://en.wikipedia.com/testStacks",
+          name: "testStack4",
+          wikipediaLink: "https://en.wikipedia.com/testStack2",
         };
 
       request(app)
@@ -70,14 +69,30 @@ describe('API', () => {
         })
         .end(done);
     });
+
+    it("get stack by id", (done) => {
+        const _id = "5fad43dd35fd7a038acc1cfc";
+        request(app)
+          .get(`/v1/stacks/${_id}`)
+          .set("x-access-token", global.token)
+          .expect((res) => {
+            res.status.should.equal(200);
+          })
+          .end(done);
+    });
+
+
 });
 
 /**
  * clear database after tests
  */
+
 after(async () => {
     try {
         await UserModel.collection.drop();
+        await test_users.collection.drop();
+        await StacksModel.collection.drop();
     } catch (error) {
         console.log('Something went wrong after tests, seems your database doesnt cleaned');
     }
