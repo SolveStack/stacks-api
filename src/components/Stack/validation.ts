@@ -25,9 +25,9 @@ class StackValidation extends Validation {
      */
     createStack(
         params: IStackModel
-    ): Joi.ValidationResult < IStackModel > {
+    ): Joi.ValidationResult<IStackModel> {
         const schema: Joi.Schema = Joi.object().keys({
-            
+
             name: Joi.string().required(),
             wikipediaLink: Joi.string().uri().required()
         });
@@ -35,43 +35,43 @@ class StackValidation extends Validation {
         return Joi.validate(params, schema);
     }
 
-//     /**
-//      * @param {{ id: string }} body
-//      * @returns {Joi.ValidationResult<{ id: string }>}
-//      * @memberof UserValidation
-//      */
-//     getUser(
-//         body: {
-//             id: string
-//         }
-//     ): Joi.ValidationResult < {
-//         id: string
-//     } > {
-//         const schema: Joi.Schema = Joi.object().keys({
-//             id: this.customJoi.objectId().required()
-//         });
+    /**
+     * @param {{ id: string }} body
+     * @returns {Joi.ValidationResult<{ id: string }>}
+     * @memberof StackValidation
+     */
+    getStack(
+        body: {
+            id: string
+        }
+    ): Joi.ValidationResult<{
+        id: string
+    }> {
+        const schema: Joi.Schema = Joi.object().keys({
+            id: this.customJoi.objectId().required()
+        });
 
-//         return Joi.validate(body, schema);
-//     }
+        return Joi.validate(body, schema);
+    }
 
-//     /**
-//      * @param {{ id: string }} body
-//      * @returns {Joi.ValidationResult<{ id: string }>}
-//      * @memberof UserValidation
-//      */
-//     removeUser(
-//         body: {
-//             id: string
-//         }
-//     ): Joi.ValidationResult < {
-//         id: string
-//     } > {
-//         const schema: Joi.Schema = Joi.object().keys({
-//             id: this.customJoi.objectId().required()
-//         });
+    // /**
+    //  * @param {{ id: string }} body
+    //  * @returns {Joi.ValidationResult<{ id: string }>}
+    //  * @memberof UserValidation
+    //  */
+    //     removeUser(
+    //         body: {
+    //             id: string
+    //         }
+    //     ): Joi.ValidationResult < {
+    //         id: string
+    //     } > {
+    //         const schema: Joi.Schema = Joi.object().keys({
+    //             id: this.customJoi.objectId().required()
+    //         });
 
-//         return Joi.validate(body, schema);
-//     }
+    //         return Joi.validate(body, schema);
+    //     }
 }
 
 export default new StackValidation();

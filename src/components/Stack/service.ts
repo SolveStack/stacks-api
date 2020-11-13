@@ -19,11 +19,11 @@ const StackService: IStackService = {
     */
     async insert(body: IStackModel): Promise<IStackModel> {
         try {
-            const validate: Joi.ValidationResult < IStackModel > = StackValidation.createStack(body);
+            const validate: Joi.ValidationResult<IStackModel> = StackValidation.createStack(body);
 
             if (validate.error) {
                 throw new Error(validate.error.message);
-            } 
+            }
 
             const stack: IStackModel = await StackModel.create(body);
             return stack;
@@ -32,11 +32,11 @@ const StackService: IStackService = {
         }
     },
 
-     /**
-     * @returns {Promise < IStackModel[] >}
-     * @memberof StackService
-     */
-    async findAll(): Promise < IStackModel[] > {
+    /**
+    * @returns {Promise < IStackModel[] >}
+    * @memberof StackService
+    */
+    async findAll(): Promise<IStackModel[]> {
         try {
             return await StackModel.find({});
         } catch (error) {
@@ -49,9 +49,17 @@ const StackService: IStackService = {
      * @returns {Promise < IStackModel >}
      * @memberof StackService
      */
-    async findOne(id: string): Promise < IStackModel > {
+    async findOne(id: string): Promise<IStackModel> {
         try {
-            // TODO: Joi validation: 
+            const validate: Joi.ValidationResult<{
+                id: string
+            }> = StackValidation.getStack({
+                id
+            });
+
+            if (validate.error) {
+                throw new Error(validate.error.message);
+            }
 
             return await StackModel.findOne({
                 _id: Types.ObjectId(id)
@@ -76,10 +84,10 @@ const StackService: IStackService = {
                 wikipediaLink: body.wikipediaLink,
             }
             const stack: IStackModel = await StackModel.updateOne
-            (
-                _id, updateBody, 
-                {new: true}
-            );
+                (
+                    _id, updateBody,
+                    { new: true }
+                );
 
             return stack
 
@@ -93,7 +101,7 @@ const StackService: IStackService = {
      * @returns {Promise < IStackModel >}
      * @memberof StackService
      */
-    async remove(id: string): Promise < IStackModel > {
+    async remove(id: string): Promise<IStackModel> {
         try {
             // TODO: Joi validation: 
 
