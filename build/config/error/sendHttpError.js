@@ -19,11 +19,11 @@ exports.sendHttpErrorModule = void 0;
  *        status:
  *          type: integer
  *          description: HTTP status code
- *          example: 200
+ *          example: 400
  *        message:
  *          type: string
  *          description: Error description
- *          example: User created
+ *          example: Not created
  */
 function sendHttpErrorModule(req, res, next) {
     res.sendHttpError = (error) => {
