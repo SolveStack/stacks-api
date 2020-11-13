@@ -27,7 +27,6 @@ class StackValidation extends Validation {
         params: IStackModel
     ): Joi.ValidationResult<IStackModel> {
         const schema: Joi.Schema = Joi.object().keys({
-
             name: Joi.string().required(),
             wikipediaLink: Joi.string().uri().required()
         });
@@ -52,6 +51,23 @@ class StackValidation extends Validation {
         });
 
         return Joi.validate(body, schema);
+    }
+
+    /**
+     * @param {IStackModel} params
+     * @returns {Joi.ValidationResult<IStackModel >}
+     * @memberof StackValidation
+     */
+    updateStack(
+        params: IStackModel
+    ): Joi.ValidationResult<IStackModel> {
+        const schema: Joi.Schema = Joi.object().keys({
+            _id: this.customJoi.objectId().required(),
+            name: Joi.string().required(),
+            wikipediaLink: Joi.string().uri().required()
+        });
+
+        return Joi.validate(params, schema);
     }
 
     /**

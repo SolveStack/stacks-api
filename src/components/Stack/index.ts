@@ -12,7 +12,7 @@ import * as swaggerUi from 'swagger-ui-express';
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function create(req: Request, res: Response, next: NextFunction): Promise < void > {
+export async function create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
         const stack: IStackModel = await StackService.insert(req.body);
 
@@ -29,7 +29,7 @@ export async function create(req: Request, res: Response, next: NextFunction): P
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function findAll(req: Request, res: Response, next: NextFunction): Promise < void > {
+export async function findAll(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
         const stacks: IStackModel[] = await StackService.findAll();
 
@@ -46,7 +46,7 @@ export async function findAll(req: Request, res: Response, next: NextFunction): 
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function findOne(req: Request, res: Response, next: NextFunction): Promise < void > {
+export async function findOne(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
         const stack: IStackModel = await StackService.findOne(req.params.id);
 
@@ -63,7 +63,7 @@ export async function findOne(req: Request, res: Response, next: NextFunction): 
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function update(req: Request, res: Response, next: NextFunction): Promise < void > {
+export async function update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
         const stack: IStackModel = await StackService.update(req.body);
 
@@ -80,8 +80,8 @@ export async function update(req: Request, res: Response, next: NextFunction): P
  * @param {NextFunction} next
  * @returns {Promise < void >}
  */
-export async function remove(req: Request, res: Response, next: NextFunction): Promise < void > {
-    
+export async function remove(req: Request, res: Response, next: NextFunction): Promise<void> {
+
     try {
         const stack: IStackModel = await StackService.remove(req.params.id);
 

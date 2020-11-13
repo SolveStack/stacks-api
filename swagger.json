@@ -504,6 +504,29 @@
   },
   "components": {
     "schemas": {
+      "StackSchema": {
+        "required": [
+          "name",
+          "wikipediaLink"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "wikipediaLink": {
+            "type": "string"
+          }
+        }
+      },
+      "Stack": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StackSchema"
+        }
+      },
       "UserSchema": {
         "required": [
           "email",

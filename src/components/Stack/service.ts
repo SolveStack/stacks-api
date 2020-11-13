@@ -74,9 +74,14 @@ const StackService: IStackService = {
     * @returns {Promise < IStackModel >}
     * @memberof StackService
     */
+
     async update(body: IStackModel): Promise<IStackModel> {
         try {
-            // TODO: Joi validation
+            const validate: Joi.ValidationResult<IStackModel> = StackValidation.updateStack(body);
+
+            if (validate.error) {
+                throw new Error(validate.error.message);
+            }
 
             let _id = body.id;
             let updateBody = {
@@ -103,15 +108,15 @@ const StackService: IStackService = {
      */
     async remove(id: string): Promise<IStackModel> {
         try {
-            const validate: Joi.ValidationResult < {
+            const validate: Joi.ValidationResult<{
                 id: string
-            } > = StackValidation.removeStack({
+            }> = StackValidation.removeStack({
                 id
             });
 
             if (validate.error) {
                 throw new Error(validate.error.message);
-            } 
+            }
 
             const stack: IStackModel = await StackModel.findOneAndRemove({
                 _id: Types.ObjectId(id)

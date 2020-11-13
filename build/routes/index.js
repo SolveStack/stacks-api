@@ -36,7 +36,7 @@ function init(app) {
      * @description Forwards any requests to the /v1/stacks URI to our StacksRouter
      * @constructs
      */
-    app.use('/v1/stacks/', StackRouter_1.default);
+    app.use('/v1/stacks/', jwtConfig.isAuthenticated, StackRouter_1.default);
     /**
      * @description Forwards any requests to the /auth URI to our AuthRouter
      * @constructs

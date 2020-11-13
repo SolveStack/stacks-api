@@ -29,9 +29,6 @@ const StackService = {
                 if (validate.error) {
                     throw new Error(validate.error.message);
                 }
-                else {
-                    console.log('okay****************************************');
-                }
                 const stack = yield model_1.default.create(body);
                 return stack;
             }
@@ -62,7 +59,12 @@ const StackService = {
     findOne(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // TODO: Joi validation: 
+                const validate = validation_1.default.getStack({
+                    id
+                });
+                if (validate.error) {
+                    throw new Error(validate.error.message);
+                }
                 return yield model_1.default.findOne({
                     _id: mongoose_1.Types.ObjectId(id)
                 });
@@ -80,7 +82,10 @@ const StackService = {
     update(body) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // TODO: Joi validation
+                const validate = validation_1.default.updateStack(body);
+                if (validate.error) {
+                    throw new Error(validate.error.message);
+                }
                 let _id = body.id;
                 let updateBody = {
                     name: body.name,
@@ -102,7 +107,12 @@ const StackService = {
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // TODO: Joi validation: 
+                const validate = validation_1.default.removeStack({
+                    id
+                });
+                if (validate.error) {
+                    throw new Error(validate.error.message);
+                }
                 const stack = yield model_1.default.findOneAndRemove({
                     _id: mongoose_1.Types.ObjectId(id)
                 });
