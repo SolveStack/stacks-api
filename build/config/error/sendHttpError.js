@@ -23,7 +23,7 @@ exports.sendHttpErrorModule = void 0;
  *        message:
  *          type: string
  *          description: Error description
- *          example: Not created
+ *          example: unexpected error
  */
 function sendHttpErrorModule(req, res, next) {
     res.sendHttpError = (error) => {

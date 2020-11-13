@@ -8,6 +8,7 @@ const connectOptions = {
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000,
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 };
 const MONGO_URI = `${index_1.default.database.MONGODB_URI}${index_1.default.database.MONGODB_DB_MAIN}`;
 exports.db = mongoose.createConnection(MONGO_URI, connectOptions);

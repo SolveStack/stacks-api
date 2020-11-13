@@ -34,7 +34,6 @@ const router = express_1.Router();
  *            application/json:
  *              schema:
  *                oneOf:
- *                  - $ref: '#/components/schemas/StackSchema'
  *        default:
  *          description: unexpected error
  *          content:
@@ -60,8 +59,18 @@ router.post("/", components_1.StackComponent.create);
  *         content:
  *           application/json:
  *             schema:
- *               oneOf:
- *                - $ref: '#/components/schemas/Stacks'
+ *               example:
+ *                  "[
+ *                      {
+ *                          id: '5fac7592e79044cc3545e778c8'
+ *                          name: stackName
+ *                          wikipediaLink: https://en.wikipedia.com/stack},
+ *                      {
+ *                          id: '5fac7592e79044cc3545e778c8'
+ *                          name: stackName
+ *                          wikipediaLink: https://en.wikipedia.com/stack
+ *                      }
+ *                  ]"
  *       default:
  *          description: unexpected error
  *          content:
@@ -96,6 +105,9 @@ router.get('/', components_1.StackComponent.findAll);
  *            schema:
  *              oneOf:
  *                - $ref: '#/components/schemas/StackSchema'
+ *              example:
+ *                  name: stackName
+ *                  wikipediaLink: https://en.wikipedia.com/stack
  */
 router.get('/:id', components_1.StackComponent.findOne);
 /**
@@ -151,10 +163,6 @@ router.patch('/:id', components_1.StackComponent.update);
  *          application/json:
  *            schema:
  *              $ref: '#/components/schemas/StackSchema'
- *            example:
- *              id: '5fac7592e79044cc3545e778c8'
- *              name: stackName
- *              wikipediaLink: https://en.wikipedia.com/stack
  *    responses:
  *      200:
  *        description: return deleted stack

@@ -23,7 +23,7 @@ import { NextFunction, Request } from 'express';
  *        message:
  *          type: string
  *          description: Error description
- *          example: Not created
+ *          example: unexpected error
  */
 export function sendHttpErrorModule(req: Request, res: any, next: NextFunction): void {
     res.sendHttpError = (error: HttpError): void => {

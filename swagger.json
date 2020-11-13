@@ -141,11 +141,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/StackSchema"
-                    }
-                  ]
+                  "oneOf": null
                 }
               }
             }
@@ -178,11 +174,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/Stacks"
-                    }
-                  ]
+                  "example": "[ { id: '5fac7592e79044cc3545e778c8' name: stackName wikipediaLink: https://en.wikipedia.com/stack}, { id: '5fac7592e79044cc3545e778c8' name: stackName wikipediaLink: https://en.wikipedia.com/stack } ]"
                 }
               }
             }
@@ -232,7 +224,11 @@
                     {
                       "$ref": "#/components/schemas/StackSchema"
                     }
-                  ]
+                  ],
+                  "example": {
+                    "name": "stackName",
+                    "wikipediaLink": "https://en.wikipedia.com/stack"
+                  }
                 }
               }
             }
@@ -305,11 +301,6 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/StackSchema"
-              },
-              "example": {
-                "id": "5fac7592e79044cc3545e778c8",
-                "name": "stackName",
-                "wikipediaLink": "https://en.wikipedia.com/stack"
               }
             }
           }
@@ -573,12 +564,12 @@
           "status": {
             "type": "integer",
             "description": "HTTP status code",
-            "example": 200
+            "example": 400
           },
           "message": {
             "type": "string",
             "description": "Error description",
-            "example": "User created"
+            "example": "unexpected error"
           }
         }
       }
