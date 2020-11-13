@@ -103,7 +103,15 @@ const StackService: IStackService = {
      */
     async remove(id: string): Promise<IStackModel> {
         try {
-            // TODO: Joi validation: 
+            const validate: Joi.ValidationResult < {
+                id: string
+            } > = StackValidation.removeStack({
+                id
+            });
+
+            if (validate.error) {
+                throw new Error(validate.error.message);
+            } 
 
             const stack: IStackModel = await StackModel.findOneAndRemove({
                 _id: Types.ObjectId(id)
